@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Navbar from '@/components/nav'
 import Products from '@/components/product';
 import Cart from '@/components/cart';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Modal from '@/components/modal';
 import Footer from '@/components/footer'
 import Hero from '@/components/hero';
@@ -48,7 +48,7 @@ export default function Home() {
 
 
   const handleAddToCart = (product, quantity) => {
-     
+      
     //const cartItem = [...this.state.cartItem];
     const products  = category
     const index = products.indexOf(product);
@@ -64,46 +64,41 @@ export default function Home() {
               const qtyIndex = qState.indexOf(qty)
               console.log(qState[qtyIndex].value)
               qState[qtyIndex].value++
-              this.setState(qState)
+              setQuantity(qState)
             }
-
             return null
-
           })
-          
         }
         return null
       })
       return null
     }
-    this.setState({cartItem: cartItem.concat(item)})
-    
-    
-   Pop()
+    setCartItem({cartItem: cartItem.concat(item)})
+    Pop()
   }
 
-  
+    
   const handleRemove =  (item, q) => {
     console.log('check')
-   const productQty  = quantity;
-   console.log(q)
-   const index = productQty.indexOf(q);
-   console.log(index)
-   productQty[index].value = 1
-   this.setState(productQty);
+    const productQty  = quantity;
+    console.log(q)
+    const index = productQty.indexOf(q);
+    console.log(index)
+    productQty[index].value = 1
+    setQuantity(productQty);
     const cartItems = cartItem.filter(c => c !== item);
-    this.setState({cartItem: cartItems});
+    setCartItem({cartItem: cartItems});
     console.log('Remove was called ' + item.id);
     
     
   }
 
   const handleClearCart =() => {
-    this.setState({cartItem: []})
+    setCartItem({cartItem: []})
     console.log(cartItem)
     console.log('clear cart was called');
     const defaultQty = quantity.map(c => c.value = 1);
-    this.setState(defaultQty)
+    setQuantity(defaultQty)
   }
 
   const getSum = (total, num) => {
@@ -111,111 +106,101 @@ export default function Home() {
   }
 
   const showSideBar = () => {
-   this.setState({sideBar: true})
-   console.log('sidebar was called ' + sideBar)
+    setSideBar({sideBar: true})
+    console.log('sidebar was called ' + sideBar)
   }
 
   const closeSideBar = () => {
-   this.setState({sideBar: false})
-   console.log('sidebar was called ' + sideBar)
+    setSideBar({sideBar: false})
+    console.log('sidebar was called ' + sideBar)
   }
 
- const Pop = () => {
-   this.setState({isOpen: true});
-   setTimeout(() => this.setState({isOpen: false}), 2500);
- }
+  const Pop = () => {
+    setIsOpen({isOpen: true});
+    setTimeout(() => setIsOpen({isOpen: false}), 2500);
+  }
 
- const handleQuantityUpdate = (q, v) => {
-   const quanty = quantity;
-   const index = quanty.indexOf(q); 
-   quanty[index].value = v
-   this.setState(quanty)
- }
+  const handleQuantityUpdate = (q, v) => {
+    const quanty = quantity;
+    const index = quanty.indexOf(q); 
+    quanty[index].value = v
+    setQuantity(quanty)
+  }
 
- const handleQuantityIncrement = (q) => {
-   const quanty = quantity;
-   const index = quanty.indexOf(q); 
-   quanty[index].value++;
-   this.setState(quanty)
- }
+  const handleQuantityIncrement = (q) => {
+    const quanty = quantity;
+    const index = quanty.indexOf(q); 
+    quanty[index].value++;
+    setQuantity(quanty)
+  }
 
- const handleQuantityDecrement = (q) => {
-   const quanty = quantity;
-   const index = quanty.indexOf(q);
-   if(quanty[index].value === 1){
-     return null
-   }
-   quanty[index].value--;
-   this.setState(quanty)
-   
- }
+  const handleQuantityDecrement = (q) => {
+    const quanty = quantity;
+    const index = quanty.indexOf(q);
+    if (quanty[index].value === 1) {
+      return null
+    }
+    quanty[index].value--;
+    setQuantity(quanty)
+  }
 
- const handleFilter = (e) => {
-   
-   if (e!=='All Categories' && e){
-     const defaultStatus = filter.map(s => s.status = false);
-     this.setState(defaultStatus);
+  const handleFilter = (e) => {
+    if (e!=='All Categories' && e) {
+      const defaultStatus = filter.map(s => s.status = false);
+      setFilter(defaultStatus);
+      filter.map(f => {
+        const fCap = f.category.toUpperCase();
+        const eCap = e.toUpperCase();
+        console.log(eCap)
+        if (fCap === eCap) {
+          f.status = true;
+          setFilter(f) 
+        }
+        return 0
+      })
+      filter.map(f => {
+        if (f.status) {
+          const fCap = f.category.toLowerCase();
+          const items = productlist.filter(p => p.category===fCap);
+          console.log(items)
+          setCategory({category: items});
+          console.log(category)
+          return 0
+        }
+        return 0
+      })
+    } else {
+      const category = productlist;
+      setCategory({category: category})
+    }
+  }
 
-     filter.map(f => {
-       const fCap = f.category.toUpperCase();
-       const eCap = e.toUpperCase();
-       console.log(eCap)
-       if (fCap === eCap) {
-         f.status = true;
-         this.setState(f) 
-       }
- 
-       return 0
-     })
- 
-     filter.map(f => {
-       
-       if(f.status){
-         const fCap = f.category.toLowerCase();
-           const items = productlist.filter(p => p.category===fCap);
-           console.log(items)
-           this.setState({category: items});
-           console.log(category)
- 
-           return 0
-         
-       }
-       return 0
-     })
-   }else{
-     const category = productlist;
-     this.setState({category: category})
-     
-   }
+  const handleStatusAll = () => {
+    const data = filter;
+    const index = data.findIndex('jewelery')
+    console.log(index)
+  }
 
- }
-
-const handleStatusAll = () => {
-  const data = filter;
-  const index = data.findIndex('jewelery')
-  console.log(index)
-}
-
-const totalAmount = () => {
-  const total = cartItem.map(c => {
-    const inter = quantity
-    for(let interObj of inter){
-      for(var interKey in interObj){
-        if(interKey === 'id' && interObj[interKey] === c.id){
-          const mult = c.price * interObj.value
-          return mult
+  const totalAmount = () => {
+    const total = cartItem.map(c => {
+      const inter = quantity
+      for(let interObj of inter){
+        for(var interKey in interObj){
+          if(interKey === 'id' && interObj[interKey] === c.id){
+            const mult = c.price * interObj.value
+            return mult
+          }
         }
       }
-    }
-    return 0
-  })
-  const pre = total.reduce(getSum, 0);
-  const final = pre.toFixed(2);
-  return final
-}
+      return 0
+    })
+    const pre = total.reduce(getSum, 0);
+    const final = pre.toFixed(2);
+    return final
+  }
 
   return (
-    <>
+    <React.Fragment>
       <Navbar onShowSideBar={showSideBar} filter={handleFilter} />
       <Modal open={isOpen}>
         This Item has been added to your Cart, Check the top left corner
@@ -241,6 +226,6 @@ const totalAmount = () => {
                 onQtyDecrement={handleQuantityDecrement}
       />
       <Footer />
-    </>
+    </React.Fragment>
   )
 }
