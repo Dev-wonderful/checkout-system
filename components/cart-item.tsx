@@ -1,7 +1,11 @@
-import React from 'react';
+import { FunctionComponent } from 'react';
+import { CartItemPropType } from '@/components/utils/types'
 import './styles/sidebar.css'
 
-const CartItem = (props) => {
+
+
+
+const CartItem: FunctionComponent<CartItemPropType> = (props) => {
 
   const item = props.item;
   return (
@@ -13,11 +17,11 @@ const CartItem = (props) => {
         <div className='category-div'><p>Category: {item.category}</p></div>
         <div className='bottom-container'>
           <p className='cart-price'>${item.price}</p>
-          <button className='remove-btn' onClick={() => props.onRemove(item, props.quanty)}>Remove</button>
+          <button className='remove-btn' onClick={() => props.onRemove(item, props.itemQuantity)}>Remove</button>
           <div className='qty'>
-            <button className='decrement' onClick={() => props.onCartQtyDecrement(props.quanty)}>-</button>
-            <span className='qty-display'>{props.quanty.value}</span>
-            <button className='increment' onClick={() => props.onCartQtyIncrement(props.quanty)}>+</button>
+            <button className='decrement' onClick={() => props.onCartQtyDecrement(props.itemQuantity)}>-</button>
+            <span className='qty-display'>{props.itemQuantity.value}</span>
+            <button className='increment' onClick={() => props.onCartQtyIncrement(props.itemQuantity)}>+</button>
           </div>
         </div>
       </div>

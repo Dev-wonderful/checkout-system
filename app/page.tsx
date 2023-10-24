@@ -213,7 +213,7 @@ export default function Home() {
       <Modal open={isOpen}>
         This Item has been added to your Cart, Check the top left corner
       </Modal>
-      <Cart item={cartItem} 
+      <Cart items={cartItem} 
             sideBar={sideBar} 
             onCloseSideBar={closeSideBar} 
             onRemove={handleRemove} 
@@ -221,7 +221,6 @@ export default function Home() {
             totalPrice={totalAmount()} 
             onCartQtyIncrement={handleQuantityIncrement} 
             onCartQtyDecrement={handleQuantityDecrement} 
-            quanty={handleCartQuantity} 
             quantityState={quantity}
       />
       <Hero filter={handleFilter} />

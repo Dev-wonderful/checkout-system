@@ -1,20 +1,29 @@
 import React from 'react';
 import './styles/navbar.css'
+import { statelessFunction } from './utils/types';
 // import { FaCartPlus } from "react-icons/fa"
 // import { Link } from 'react-router-dom';
 //import Cart from './cart';
 
+interface NavbarProps {
+  filter: (event: string) => void;
+  onShowSideBar: statelessFunction;
+}
 
-function Navbar(props) {
+const Navbar: React.FC<NavbarProps> = (props) => {
   //console.log('props' + props.onShowSideBar)
+  const eventHandler = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const element = event.target as HTMLElement
+    return element.innerText
+  }
   return(
     <React.Fragment>
       <nav className='nav'>
         <div className='nav-content-container '>
           <div className='menu-bars-block'>
-            <Link to="#" className='menu-bars'>
-              <FaCartPlus onClick={props.onShowSideBar}/>
-            </Link>
+            {/* <Link to="#" className='menu-bars'>
+              <FaCartPlus onClick={() => props.onShowSideBar()}/>
+            </Link> */}
           </div>
           <div className='nav-content-block'>
             <ul className='nav-link'>
@@ -23,11 +32,11 @@ function Navbar(props) {
             <div className='dropdown'>
               <button className='drop-btn'>Category</button>
               <div className='dropdown-content'>
-                <li onClick={(e) => props.filter(e.target.innerText)}>Men Clothing</li>
-                <li onClick={(e) => props.filter(e.target.innerText)}>Jewelery</li>
-                <li onClick={(e) => props.filter(e.target.innerText)}>Electronics</li>
-                <li onClick={(e) => props.filter(e.target.innerText)}>Women Clothing</li>
-                <li onClick={(e) => props.filter(e.target.innerText)}>All Categories</li>
+                <li onClick={(e) => props.filter(eventHandler(e))}>Men Clothing</li>
+                <li onClick={(e) => props.filter(eventHandler(e))}>Jewelery</li>
+                <li onClick={(e) => props.filter(eventHandler(e))}>Electronics</li>
+                <li onClick={(e) => props.filter(eventHandler(e))}>Women Clothing</li>
+                <li onClick={(e) => props.filter(eventHandler(e))}>All Categories</li>
               </div>
             </div>
           </div>

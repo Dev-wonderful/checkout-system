@@ -3,16 +3,16 @@ import { Product, Quantity } from '@/components/utils/types'
 import './styles/product.css';
 
 type quantityFunc = (itemQuantity: Quantity) => void;
-type cartFunc = (product: Product) => void;
-interface propType {
+type addProductCartFunc = (product: Product) => void;
+interface ProductPropType {
   product: Product[];
-  onAddToCart: cartFunc;
+  onAddToCart: addProductCartFunc;
   allQuantity: Quantity[];
   onQtyIncrement: quantityFunc;
   onQtyDecrement: quantityFunc;
 }
 
-const Products: React.FC<propType> = (prop) => {
+const Products: React.FC<ProductPropType> = (prop) => {
 
   const { product, onAddToCart, allQuantity, onQtyIncrement, onQtyDecrement } = prop
 
@@ -31,7 +31,7 @@ const Products: React.FC<propType> = (prop) => {
   type display = {
     product: Product,
     productQuantity: Quantity,
-    onAddToCart: cartFunc
+    onAddToCart: addProductCartFunc
   }
 
   const Displayproducts = ({product, productQuantity, onAddToCart}: display) => {
