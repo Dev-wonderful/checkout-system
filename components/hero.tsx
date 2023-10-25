@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Hero = (props) => {
+interface HeroProps {
+  filter: (event: string) => void;
+}
+
+const Hero: React.FC<HeroProps> = (props) => {
+  const eventHandler = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    const element = event.target as HTMLElement
+    return element.innerText
+  }
   return ( 
     <div className="hero">
       <div className="hero-container">
@@ -9,11 +17,11 @@ const Hero = (props) => {
       </div>
 
       <div className='action'>
-        <button onClick={(e) => props.filter(e.target.innerText)}>All Categories</button>
-        <button onClick={(e) => props.filter(e.target.innerText)}>Electronics</button>
-        <button onClick={(e) => props.filter(e.target.innerText)}>Jewelery</button>
-        <button onClick={(e) => props.filter(e.target.innerText)}>Women Clothing</button>
-        <button onClick={(e) => props.filter(e.target.innerText)}>Men Clothing</button>
+        <button onClick={(e) => props.filter(eventHandler(e))}>All Categories</button>
+        <button onClick={(e) => props.filter(eventHandler(e))}>Electronics</button>
+        <button onClick={(e) => props.filter(eventHandler(e))}>Jewelery</button>
+        <button onClick={(e) => props.filter(eventHandler(e))}>Women Clothing</button>
+        <button onClick={(e) => props.filter(eventHandler(e))}>Men Clothing</button>
       </div>
     </div>
   );
