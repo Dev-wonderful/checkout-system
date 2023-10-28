@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react';
 import CartItem from '@/components/cart-item';
 import { Product, statelessFunction, CartItemPropType, Quantity } from '@/components/utils/types'
 // import { Link } from 'react-router-dom';
-import './styles/sidebar.css'
+import '../styles/sidebar.css'
 
 
 interface CartPropType extends Partial<CartItemPropType> {

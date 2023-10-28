@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/navbar.css'
+import '../styles/navbar.css'
 import { statelessFunction } from './utils/types';
 // import { FaCartPlus } from "react-icons/fa"
 // import { Link } from 'react-router-dom';

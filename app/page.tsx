@@ -9,6 +9,7 @@ import Modal from '@/components/modal';
 import Footer from '@/components/footer'
 import Hero from '@/components/hero';
 import { Product, Quantity } from '@/components/utils/types'
+import "../styles/page.css"
 
 
 export default function Home() {
@@ -226,7 +227,7 @@ export default function Home() {
             quantityState={quantity}
       />
       <Hero filter={handleFilter} />
-      <Products product={category}
+      <Products product={category.length > 0 ? category : productlist}
                 onAddToCart={handleAddToCart}
                 allQuantity={quantity}
                 onQtyIncrement={handleQuantityIncrement}

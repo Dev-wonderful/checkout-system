@@ -1,0 +1,123 @@
+.nav{
+    background-color:  rgb(24, 24, 34);;
+    width: 100%;
+    height: 50px;
+    /**position: sticky;
+    top: 0;**/
+    padding-right: 0.5rem;
+    z-index: 1;
+  }
+  .nav-content-container{
+    background-color:none;
+    /**max-width: 1100px;**/
+    /* margin: auto; */
+    
+    color: whitesmoke;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    
+    align-content: center;
+  }
+  .nav-content-block{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .nav-link{
+    /* ackground-color: blue; */
+    cursor: pointer;
+    width: fit-content;
+    list-style: none;
+  }
+  .nav-link li:hover{
+    border-bottom: 2px aliceblue solid;
+  }
+  .dropdown{
+    /* ackground-color: red; */
+    width: 200px;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+    font-weight: bolder;
+  }
+  .dropdown-content{
+    background-color: teal;
+    position: absolute;
+    width: 100%;
+    display: none;
+    z-index: 1000;
+  }
+  .dropdown-content li{
+    background-color: whitesmoke;
+    color: black;
+    padding: 15px;
+    display: block;
+    width: 100%;
+    font-family: cursive;
+    font-style: italic;
+    border: 1px solid gray;
+    cursor: pointer;
+    
+  }
+  .dropdown-content li:last-child{
+    color: navy;
+    background-color: powderblue;
+  }
+  .dropdown-content li:hover{
+    background-color: rgb(199, 191, 191);
+  
+  }
+  .dropdown:hover .dropdown-content{
+    display: block;
+  }
+  .drop-btn{
+    height: 100%;
+    width: 100%;
+    color: aliceblue;
+    font-size: medium;
+    font-family: sans-serif;
+    background-color: rgb(106, 190, 106);
+    font-size: 5vh, 3vw;
+    
+  }
+  .menu-bars-block{
+    /* ackground-color: brown; */
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .menu-bars{
+    background-color: thistle;
+    margin-left: 2rem;
+    font-size: 2rem;
+    background: none;
+    width: fit-content;
+  }
+  @media(max-width : 700px){
+    .nav{
+      height: fit-content;
+    }
+    .nav-content-container{
+      height: fit-content;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+    .dropdown{
+      height: 100%;
+      padding-bottom: 0.5rem;
+    }
+    .nav-content-block{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+      gap: 10px;
+    }
+    .nav-link{
+      width: 100%;
+    }
+    .dropdown{
+      width: 100%;
+    }
+   
+  }

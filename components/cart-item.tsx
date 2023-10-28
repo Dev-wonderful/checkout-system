@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 import { CartItemPropType } from '@/components/utils/types'
-import './styles/sidebar.css'
+import '../styles/sidebar.css'
 
 
 

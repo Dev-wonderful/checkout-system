@@ -1,5 +1,5 @@
 import React from 'react';
-import './styles/product.css';
+// import './styles/product.css';
 
 const Quantity = ({ qty, qtyState, id }) => {
    // console.log('qtystate ' + qtyState())

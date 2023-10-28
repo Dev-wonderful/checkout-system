@@ -1,0 +1,200 @@
+body{
+    background-color: gray;
+    min-height: 100%;
+  }
+  #root{
+    position: relative;
+    width: 100%;
+    background-color: none;
+    height: 100%;
+    text-align: center;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+  }
+  *{
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+  }
+  
+  .grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  #cart-image{
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+  }
+  .modal-styles {
+    position: fixed;
+    top: 15%;
+    left: 0;
+    z-index: 1000;
+    background-color: lightblue;
+    height: 70px;
+    width: 80%;
+    text-align: center;
+    line-height: 70px;
+    transition: 500ms;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-style: italic;
+    font-family: sans-serif;
+    font-size: larger;
+  }
+  .modal-close{
+    position: fixed;
+    top: 15%;
+    left: -100vw;
+    z-index: 1000;
+    background-color: lightblue;
+    height: 70px;
+    width: 80%;
+    text-align: center;
+    line-height: 70px;
+    transition: 500ms;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    font-style: italic;
+    font-family: sans-serif;
+  }
+  .hero{
+    height: 500px;
+    font-family: cursive;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+  .hero::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    /* background: url(../images/sunlight\ road.jpg); */
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+  }
+  .hero-container{
+    position: relative;
+  
+  }
+  .hero-container h1{
+    color: whitesmoke;
+    font-size: 4rem;
+  }
+  .hero-container p{
+    color: aquamarine;
+    font-size: 1.5rem;
+  }
+  .action{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    color: black;
+  }
+  .action button{
+    background-color: aqua;
+    border: 1px solid black;
+    cursor: pointer;
+    padding: 2px;
+  }
+  .action button:hover{
+    background-color:rgb(44, 83, 83);
+    color: whitesmoke;
+  }
+  .carousel-container{
+    height: 300px;
+    width: 100%;
+    background-color: cadetblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .carousel{
+    background-color: chocolate;
+    height: 100%;
+    width: 100%;
+    border-top-right-radius: 50%;
+    border-top-left-radius: 50%;
+  }
+  
+  .footer{
+    background-color: rgb(24, 24, 34);
+    width: 100%;
+    color: whitesmoke;
+    font-size: 0.6rem 1.3rem;
+    font-style: oblique;
+    padding: 3rem;
+    height: fit-content;
+    margin-top: auto;
+    /* position: sticky;
+    bottom: 0px; */
+  }
+  .footer div{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  
+  @media(max-width: 700px) {
+    .modal-styles{
+      font-size: 0.9rem;
+      width: 90%;
+    }
+    .modal-close{
+      font-size: 0.9rem;
+    }
+  }
+  @media(max-width: 500px) {
+    .modal-styles{
+      font-size: 0.8rem;
+      width: 100%;
+    }
+    .modal-close{
+      font-size: 0.5rem;
+    }
+  }
+  @media(max-width: 400px) {
+    .modal-styles{
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 12px;
+      width: 100%;
+    }
+    .modal-close{
+      font-size: 10px;
+    }
+    .footer div{
+      display: grid;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .hero-container h1{
+      
+      font-size: 2.5rem;
+    }
+    .hero-container p{
+      font-size: 1rem;
+    }
+  }
+  

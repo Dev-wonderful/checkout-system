@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Product, Quantity } from '@/components/utils/types'
-import './styles/product.css';
+import '../styles/product.css';
 
 type quantityFunc = (itemQuantity: Quantity) => void;
 type addProductCartFunc = (product: Product) => void;
